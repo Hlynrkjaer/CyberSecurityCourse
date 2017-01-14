@@ -24,12 +24,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
   // we able to remove ^ this string for turn ON "default" feature back
  // under the Spring Framework for CSRF protection enabled;
-        http.headers().disable();
-        http.cors().disable();
+        http.headers().disable();        
      //   ^ with not disabled option (or custom-setting) headers can be next:
     // http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
    // where also visible other options to configure headers-settings
   //   so there is possible to add something more interesting, than just disable all feature;
+        http.cors().disable();
+   //   ^ just as additional to points, which should be enabled in fact!    
         http.authorizeRequests()
                 .antMatchers("/hidden", "/css/**").permitAll()
       // we able to remove ^ this string for remove "debug"-page-(access)
