@@ -4,8 +4,10 @@ h2 {font-size:388%}
 #ul {color:white; text-align:center; font-size:110%}
 #ol {color:white; text-align:center; font-size:80%}
 #welcome {font-family:verdana; text-align:center;}
+#map {font-family:verdana; text-align:center; font-size:220%}
+#mapli {font-family:verdana; font-size:60%}
 #about {font-size:115%; text-align:center;}
-.youtube {text-align:center;}
+.youtube {text-align:center; font-size:150%}
 a:link    {color:white; 
            background-color:transparent; 
            text-decoration:none}

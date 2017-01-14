@@ -2,6 +2,7 @@ package sec.project.controller;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,7 +67,12 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String loadForm() {
+    public String loadForm(Model model, Authentication check) {       
+            int trickCount;   // temporary trick for handling admin-access;       
+        if (check.getName().equals("admin")){
+            trickCount = 1;
+        model.addAttribute("admin", trickCount);
+        }
         return "form";
     }
 
@@ -74,5 +80,19 @@ public class SignupController {
     public String submitForm(@RequestParam String name, @RequestParam String phone) {
         signupRepository.save(new Signup(name, phone));
         return "done";
+    }
+    
+    @RequestMapping(value = "/preview", method = RequestMethod.GET)
+    public String loadPreview() {return "preview";}
+    
+    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    public String loadMap(@RequestParam String URL) {
+        if (URL.equalsIgnoreCase("form")){URL = "http://127.0.0.1:8080/form";}
+        if (URL.equalsIgnoreCase("login")){URL = "http://127.0.0.1:8080/login";}
+        if (URL.equalsIgnoreCase("hidden")){URL = "http://127.0.0.1:8080/hidden";}
+        if (URL.equalsIgnoreCase("preview")){URL = "http://127.0.0.1:8080/preview";}
+        if (URL.equalsIgnoreCase("formsrc")){URL = "http://127.0.0.1:8080/formsrc?review=on";}
+        if (URL.equalsIgnoreCase("fylkr")){URL = "http://127.0.0.1:8080/fylkr?trick=doTheTrick";}
+        return "redirect:" + URL;
     }
 }

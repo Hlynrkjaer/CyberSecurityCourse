@@ -10,13 +10,27 @@
 
         <h1 id="welcome">Welcome!</h1>
         <hr />
- <p id="about"><b>You are already part of <q><u><abbr title="Marbjorn Folk Part">MFP</abbr></u></q>.
+ <p id="about"><b>You are already part of <q><u><abbr title="Marbjorn Folk Party">MFP</abbr></u></q>.
          If you want to invite your friends - so you able to get their access! And add one more listeners from you! </b></p>
         
         <form action="#" th:action="@{/form}" method="POST">
             <p><label for="name">Name</label>: <input type="text" name="name" id="name" required="required"/></p>
             <p><label for="phone">Phone</label>: <input type="text" name="phone" id="phone"/></p>
             <p><input type="submit" value="Go!" /></p>
+        </form>
+        
+                
+        <h2 id="map">Also you can use the Map of website!</h2>
+        <hr />
+            <ul id="mapli">
+             <li>For re-fresh page just add the "<strong>form</strong>" ; "<strong>login</strong>" for re-login!</li>
+             <li th:if="${admin} != null">"<strong>hidden</strong>" for re-check ToDo... "<strong>formsrc</strong>" for review the src-files... "<strong>fylkr</strong>" for get the list of "listeners"...</li>  
+             <li>Just add "<strong>preview</strong>" to get the preview of our <q><u><abbr title="Harrleif Folk Party">HFP</abbr></u></q></li>
+            </ul>
+        
+        <form action="#" th:action="@{/map}" method="GET">
+            <p><label for="URL">URL</label>: <input type="text" name="URL" id="URL" placeholder="Try add: preview"/></p>
+            <p><input type="submit" value="Go!" /></p>          
         </form>
     </body>
 </html>
