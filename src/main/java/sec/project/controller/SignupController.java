@@ -16,7 +16,7 @@ public class SignupController {
 
     @Autowired
     private SignupRepository signupRepository;
-    
+
     @PostConstruct
     public void init() {
         signupRepository.save(new Signup("Bjorn Arnleifsson", "28-388"));
