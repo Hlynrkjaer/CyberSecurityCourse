@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-//  we have to use this import - if want to use encrypt-method for passwords:
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
+   //  we have to use this import - if want to use encrypt-method for passwords:
+  // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+ // import org.springframework.security.crypto.password.PasswordEncoder;
 // import org.springframework.context.annotation.Bean;
 
 @Configuration
@@ -24,7 +24,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
   // we able to remove ^ this string for turn ON "default" feature back
  // under the Spring Framework for CSRF protection enabled;
-  
+        http.headers().disable();
+        http.cors().disable();
+     //   ^ with not disabled option (or custom-setting) headers can be next:
+    // http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
+   // where also visible other options to configure headers-settings
+  //   so there is possible to add something more interesting, than just disable all feature;
         http.authorizeRequests()
                 .antMatchers("/hidden", "/css/**").permitAll()
       // we able to remove ^ this string for remove "debug"-page-(access)

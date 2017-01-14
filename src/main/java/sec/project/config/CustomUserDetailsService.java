@@ -27,7 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.accountDetails.put("Heilung","Krigsgaldr");
         this.accountDetails.put("Skogvidr","D%GfS_s5{@Vb2{,U9LBc!wv7XG4U5B&8\"r=u?Y;:;&4+34(>S\"Y'VkS89Q");
         this.accountDetails.put("admin","admin");
-        this.accountDetails.put("CMS","CMSpassword");
+        this.accountDetails.put("CMS","CMSpassword");        
     //    ^ we able to remove this "default" passwords for "admin"-access;
    //       or passwords, which can be as "backdoor" under the "tools in use";
   //        but also will use "encrypt"-methods for store passwords in database;      
