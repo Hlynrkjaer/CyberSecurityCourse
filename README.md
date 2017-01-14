@@ -36,5 +36,5 @@ Second one provide some kind of potential troublepoint with Unvalidated Redirect
       With current view: this is just kind of "trick"-feature;
       But provide additional steps to "play" with project-application;
       
-      Also this is partly can be related as extend-steps for adding the next "vulnerable"-point.
+      Also this is partly can be related with extend-steps for adding the next "vulnerable"-point.
       Which can be covered by Trouble Ten from OWASP TOP TEN..
