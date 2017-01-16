@@ -95,6 +95,9 @@ So there is will be possibility to get CSRF-token (based on HttpOnly disabled fo
      POST-request forms vulnerable if there is possible to get csrf-token (by using Cross-site-scripting as example).
      
      First of this points can be more visible, when we add log-out (on current time there is "mapping");
+     
+     Also with CSRF-enabling and with not changes about database-console:
+     hibernate/h2-console access will be not available based on points that CSRF-tokens is missing with login there;
  
  
  
