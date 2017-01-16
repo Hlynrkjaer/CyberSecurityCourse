@@ -10,7 +10,7 @@
 
         <h1 id="welcome">Welcome!</h1>
         <hr />
- <p id="about"><b>You are already part of <q><u><abbr title="Marbjorn Folk Party">MFP</abbr></u></q>.
+        <p id="about"><b><strong id="who" th:text="${who}">Who</strong>, you are already part of <q><u><abbr title="Marbjorn Folk Party">MFP</abbr></u></q>.
          If you want to invite your friends - so you able to get their access! And add one more listeners from you! </b></p>
         
         <form action="#" th:action="@{/form}" method="POST">
@@ -28,9 +28,10 @@
              <li>Just add "<strong>preview</strong>" to get the preview of our <q><u><abbr title="Harrleif Folk Party">HFP</abbr></u></q></li>
             </ul>
         
-        <form action="#" th:action="@{/map}" method="GET">
+        <form th:action="@{/map}" method="GET">
             <p><label for="URL">URL</label>: <input type="text" name="URL" id="URL" placeholder="Try add: preview"/></p>
-            <p><input type="submit" value="Go!" /></p>          
+            <p><input type="submit" value="Go!" /></p>
+            <p><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/></p>
         </form>
     </body>
 </html>

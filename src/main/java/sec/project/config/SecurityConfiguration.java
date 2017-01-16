@@ -1,5 +1,4 @@
 package sec.project.config;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,10 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-   //  we have to use this import - if want to use encrypt-method for passwords:
-  // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
- // import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.context.annotation.Bean;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+      //  we have to use next import-strings,
+     //             if we want to use encrypt-method for passwords:
+    // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+   //  import org.springframework.security.crypto.password.PasswordEncoder;
+  //   import org.springframework.context.annotation.Bean;
 
 @Configuration
 @EnableWebSecurity
@@ -21,25 +22,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-  // we able to remove ^ this string for turn ON "default" feature back
- // under the Spring Framework for CSRF protection enabled;
-        http.headers().disable();        
-     //   ^ with not disabled option (or custom-setting) headers can be next:
-    // http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
-   // where also visible other options to configure headers-settings
-  //   so there is possible to add something more interesting, than just disable all feature;
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+      // with this ^ setting there will be "csrf-token as cookie";
+     //   this is can be OK, but there is option for HttpOnly as "false()" also;
+    //   as result if there will be cross-site-scripting ability...
+   //       we will be able to get this csrf-token by the scripts.
+  //    String can be "removed" for enabling "normal" CSRF-protection...
+ //         or if this design required - will configure it normally...
+//                       and with security-meanings!
         http.cors().disable();
-   //   ^ just as additional to points, which should be enabled in fact!    
+        http.headers().disable();
+      //  ^ with not disabled option (or custom-setting) headers can be next:
+     // http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
+    //      where also visible other options to configure headers-settings
+   //           for situations, when required custom design
+  //   so there is possible to add something more interesting, than just disable all feature;
+ //     and CORS-disabled there just as additional to points, which should be enabled in fact;
+//    This strings possible to remove for "get back" default "proper" security features!
         http.authorizeRequests()
                 .antMatchers("/hidden", "/css/**").permitAll()
-      // we able to remove ^ this string for remove "debug"-page-(access)
-     // when application goes be visible for users;
+      //    we able to remove ^ this string for remove "debug"-page-(access)
+     //         when application goes to be visible for users;
                 .antMatchers("/formsrc").hasAuthority("ADMIN")
-                .antMatchers("/fylkr").authenticated()
                 .anyRequest().authenticated();
         http.formLogin().permitAll();
-    //  ^ good to think about logout too;
+     //  ^ good to think about logout too;
     }
 
     @Autowired

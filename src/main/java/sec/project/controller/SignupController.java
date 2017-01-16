@@ -34,19 +34,19 @@ public class SignupController {
         return "redirect:/form";
     }
 
-    // We able to remove this "debug" mapping for get access to this page;
-    // Or just will add there more protection layers for possibility get page..
-    // Or re-change settings under the SecurityConfiguration.java :
+      // We able to remove this "debug" mapping, for "remove" access to this page;
+     //   Or just will add more protection layers for possibility get page.. there
+    //         or re-change settings under the SecurityConfiguration.java :
     @RequestMapping(value = "/hidden", method = RequestMethod.GET)
     public String loadHidden() {
         return "hidden";
     }
 
-    // We able to do protection for "pages-not-for-all" with more proper design;
-    // There is main protection just the "string" under the GET as parameter;
-    // And just string, which can be transferred from user's browser.
-    // There is enough to be logged 
-    //    (but page designed to be visible not for all logged users);    
+      // We able add protection for "pages-not-for-all" with more proper design.
+     //   There is main protection just the "string" under the GET as parameter;
+    //      And "just string", which can be transferred from user's browser.
+   //          As result - there is enough to be logged under the application
+  //        (but page designed to be visible not for all logged users);
     @RequestMapping(value = "/fylkr", method = RequestMethod.GET)
     public String loadFylkr(Model model, @RequestParam(required = false) String trick) {
         if (trick.equals("doTheTrick")) {
@@ -67,9 +67,11 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String loadForm(Model model, Authentication check) {       
-            int trickCount;   // temporary trick for handling admin-access;       
-        if (check.getName().equals("admin")){
+    public String loadForm(Model model, Authentication check) {
+            int trickCount;   // temporary trick for handling admin-access;
+            String who = check.getName();
+        model.addAttribute("who", who);
+        if (who.equals("admin")){
             trickCount = 1;
         model.addAttribute("admin", trickCount);
         }
@@ -84,7 +86,7 @@ public class SignupController {
     
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
     public String loadPreview() {return "preview";}
-    
+    // there is "get" and if will be for logout - so CSRF with more power!
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String loadMap(@RequestParam String URL) {
         if (URL.equalsIgnoreCase("form")){URL = "http://127.0.0.1:8080/form";}
