@@ -1,25 +1,21 @@
 # CyberSecurityCourse
 <sub>cybersecuritybase-project ( task from https://cybersecuritybase.github.io/ -- Course Project One -- )</sub>
-<hr />
+- - - -
 There will be **check-steps**:
-<ul>
-<li>for improve design,</li>
-<br />
-<li>adding some features and</li>
-<br />
-<li>other related steps (with additional steps for troublepoints-usage) to my project-application.</li>
-<br />
-</ul>
-Something like documentation for first design of this task available with next <a href="https://github.com/marrbjorn/documentation/tree/master/F-Secure%20Cyber%20Security%20Base%20MOOC.fi%20-First%20Project" target="_blank">URL</a>
-<hr />
-## FIRST EXTEND-STEPS TO MY PROJECT APPLICATION:
+
+* for improve design,
+* adding some features and
+* other related steps (with additional steps for troublepoints-usage) to my project-application.
+
+Something like documentation for first design of this task available with next [URL](https://github.com/marrbjorn/documentation/tree/master/F-Secure%20Cyber%20Security%20Base%20MOOC.fi%20-First%20Project/)
+- - - -
+#### FIRST EXTEND-STEPS TO MY PROJECT APPLICATION:
 
 
-<strong>--></strong> There added "http.headers()"-disabled-point; and "http.cors()"-disabled-point;
+<kbd>--></kbd> There added "http.headers()"-disabled-point; and "http.cors()"-disabled-point;
 
-<strong>--></strong> Small "add"-point as some kind of "mapping" (trick-feature); 
+<kbd>--></kbd> Small "add"-point as some kind of "mapping" (trick-feature); 
 
---
 First one provide some kind of ability to "improve" troubles with security configuration.
 
       As result there will be disabled most of common "headers" and features, which good to have "enabled";
@@ -30,7 +26,6 @@ First one provide some kind of ability to "improve" troubles with security confi
       Basically should be required to work with "custom"..
       if we want to disable/change some of "headers"-features!
       
---
 Second one provide some kind of potential troublepoint with Unvalidated Redirects.
 
       With current view: this is just kind of "trick"-feature;
@@ -39,18 +34,15 @@ Second one provide some kind of potential troublepoint with Unvalidated Redirect
       Also this is partly can be related with extend-steps for adding the next "vulnerable"-point.
       Which can be covered by Trouble Ten from OWASP TOP TEN..
 
-<hr />
-## SECOND EXTEND-STEPS TO MY PROJECT APPLICATION:
+- - - -
+#### SECOND EXTEND-STEPS TO MY PROJECT APPLICATION:
+<kbd>--></kbd> There was re-design steps for CSRF-attack and CSRF-protection under the project-application;
 
+<kbd>--></kbd> "Small improve" point for disabling "http.headers()";
 
-<strong>--></strong> There was re-design steps for CSRF-attack and CSRF-protection under the project-application;
+<kbd>--></kbd> There also added feature to show the "username" after the login;
 
-<strong>--></strong> "Small improve" point for disabling "http.headers()";
-
-<strong>--></strong> There also added feature to show the "username" after the login;
-
---
-<strong>First one</strong> will provide CSRF-protection in fact; Previously it was just "disabled" totally;
+**First one** will provide CSRF-protection in fact; Previously it was just "disabled" totally;
 
 But I decided to re-design it; And firstly just start to use CSRF-protection under the Spring configuration;
 
@@ -101,7 +93,7 @@ So there is will be possibility to get CSRF-token (based on HttpOnly disabled fo
  
  
  
- <strong>Second one</strong> will provide situation that http-security-headers (by Spring setting) will be missing;
+ **Second one** will provide situation that http-security-headers (by Spring setting) will be missing;
  
  There is most common and good one headers; More nice to have this feature enabled;
  
@@ -111,7 +103,7 @@ So there is will be possibility to get CSRF-token (based on HttpOnly disabled fo
  
  
  
- <strong>Third one</strong> just provide "view"-point. :)
+ **Third one** just provide "view"-point. :)
  
  When there is login - will be visible username under the form-page;
  
