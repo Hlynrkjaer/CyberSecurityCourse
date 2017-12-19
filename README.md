@@ -1,7 +1,7 @@
 # CyberSecurityCourse
 <sub>cybersecuritybase-project ( task from https://cybersecuritybase.github.io/ -- Course Project One -- )</sub>
 <hr />
-There will be <strong>check-steps</strong>:
+There will be **check-steps**:
 <ul>
 <li>for improve design,</li>
 <br />
@@ -10,9 +10,9 @@ There will be <strong>check-steps</strong>:
 <li>other related steps (with additional steps for troublepoints-usage) to my project-application.</li>
 <br />
 </ul>
-Some kind of documentation for first design of this task available with next <a href="https://github.com/marrbjorn/documentation/tree/master/F-Secure%20Cyber%20Security%20Base%20MOOC.fi%20-First%20Project" target="_blank">URL</a>
+Something like documentation for first design of this task available with next <a href="https://github.com/marrbjorn/documentation/tree/master/F-Secure%20Cyber%20Security%20Base%20MOOC.fi%20-First%20Project" target="_blank">URL</a>
 <hr />
-# FIRST EXTEND-STEPS TO MY PROJECT APPLICATION:
+## FIRST EXTEND-STEPS TO MY PROJECT APPLICATION:
 
 
 <strong>--></strong> There added "http.headers()"-disabled-point; and "http.cors()"-disabled-point;
@@ -40,7 +40,7 @@ Second one provide some kind of potential troublepoint with Unvalidated Redirect
       Which can be covered by Trouble Ten from OWASP TOP TEN..
 
 <hr />
-# SECOND EXTEND-STEPS TO MY PROJECT APPLICATION:
+## SECOND EXTEND-STEPS TO MY PROJECT APPLICATION:
 
 
 <strong>--></strong> There was re-design steps for CSRF-attack and CSRF-protection under the project-application;
