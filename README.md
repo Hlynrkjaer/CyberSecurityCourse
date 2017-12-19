@@ -12,102 +12,102 @@ Something like documentation for first design of this task available with next [
 #### FIRST EXTEND-STEPS TO MY PROJECT APPLICATION:
 
 
-<kbd>--></kbd> There added "http.headers()"-disabled-point; and "http.cors()"-disabled-point;
+<kbd>**»**</kbd> Added point with "http.headers()"-disabled; and point with disabled "http.cors()";
 
-<kbd>--></kbd> Small "add"-point as some kind of "mapping" (trick-feature); 
+<kbd>**»**</kbd> Small "addition" as some kind of "mapping" (trick-feature); 
 
-First one provide some kind of ability to "improve" troubles with security configuration.
+**First one** provide some kind of ability to "improve" troubles with security configuration.
 
-      As result there will be disabled most of common "headers" and features, which good to have "enabled";
+      As result there will be disabled most of common "headers" and features, which good to have with "enabled" status;
       
-      And.. there is just "disabled" option under the Spring; 
-      But will be more interesting to work with custom-ones;
+      This is just disabled default options under the Spring framework; 
+      But will be more interesting to work with custom implementations;
       
-      Basically should be required to work with "custom"..
-      if we want to disable/change some of "headers"-features!
+      Because, basically, required to work with custom ones...
+      if we indeed want to disable/change some of "headers"-features!
       
-Second one provide some kind of potential troublepoint with Unvalidated Redirects.
+**Second one** provide some kind of potential troublepoint with Unvalidated Redirects.
 
       With current view: this is just kind of "trick"-feature;
       But provide additional steps to "play" with project-application;
       
-      Also this is partly can be related with extend-steps for adding the next "vulnerable"-point.
-      Which can be covered by Trouble Ten from OWASP TOP TEN..
+      Also partly related with adding another vulnerable point.
+      What can be covered as "Trouble Ten" from OWASP TOP TEN list.
 
 - - - -
 #### SECOND EXTEND-STEPS TO MY PROJECT APPLICATION:
-<kbd>--></kbd> There was re-design steps for CSRF-attack and CSRF-protection under the project-application;
+<kbd>**»**</kbd> Re-designed steps for CSRF-attack and CSRF-protection view;
 
-<kbd>--></kbd> "Small improve" point for disabling "http.headers()";
+<kbd>**»**</kbd> "Small improve" point for disabling "http.headers()";
 
-<kbd>--></kbd> There also added feature to show the "username" after the login;
+<kbd>**»**</kbd> Also added feature to show the "username" after the login;
 
-**First one** will provide CSRF-protection in fact; Previously it was just "disabled" totally;
+**First one** will provide CSRF-protection in fact; Previously it was disabled completely;
 
-But I decided to re-design it; And firstly just start to use CSRF-protection under the Spring configuration;
+But I decided to re-design it; And firstly just start to use CSRF-protection (provided by Spring configuration);
 
-But after some dreams - I decided to do next points with CSRF-protection:
+Then I decided to do next points with CSRF-protection:
 
-There will be enabled CSRF-protection, but with specific option as: 
+There enabled CSRF-protection, but with specific option as: 
 
     csrfTokenRepository(CookieCsrfTokenRepository); 
 
-As result there will be kind of "CSRFtoken as cookie"; As feature - this is can be helpful and good.
+As result will be something like "CSRFtoken as cookie"; As feature - this is can be helpful and good.
 
 But I also decided to do this with additional "option"; so result will be as:
 
     http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()); 
 
-This is will trigger situation that if application will be with Cross-site-scripting troublepoint...
+This will trigger situation that if application will be with Cross-site-scripting troublepoint:
 
-So there is will be possibility to get CSRF-token (based on HttpOnly disabled for this Csrftoken-cookie);
+should be possible to get CSRF-token (based on disabled HttpOnly for this Csrftoken-cookie);
 
-     So as result there will be next situation:
-     We have the CSRF protection enabled under the project-application by Spring;
+     As result - next situation:
+     CSRF protection is enabled with project (by Spring framework);
      
-     This is covered mainly just POST/DELETE request forms. And do not cover the GET-request forms.
-     If we have dreams to use csrf-token for GET-request forms... so we able to add it under the HTML template;
-     Thymeleaf will provide this feature. And I use it with this project-application as input-hidden form.
+     With this design - covered mainly only POST/DELETE request forms. And ignored GET-request forms.
+     If we would like to use csrf-token for GET-request forms - possible to add it with HTML template;
+     Thymeleaf will provide this feature. And I 'tried' to use it as input-hidden form.
      
-     But mainly this is kind of trick, because GET-method for critical things.... not nice.
+     Generally, this is worst design - because GET-method for critical things.... not nice.
      
-     Also CSRF-protection with setting about cookie/csrf-token and with HttpOnly-disabled for this.
+     Then CSRF protection with certain setting about cookie/csrf-token (with HttpOnly-disabled).
      
-     As result there is possibility get this kind of "cookie" by scripts.
+     As result - possible to get this kind of "cookie" by scripts.
      
-     So there work CSRF-protection for POST-request forms. And "kind" of csrf-tokens for GET-requests.
+     So, CSRF protection for POST-request forms is works. And kind of csrf-tokens for GET-requests.
      
-     But we able to do CSRF-attack for this GET-request form. This is will be work.
-     And we able to do CSRF-attack for POST-request form - if "csrf-tokens" will be known for us.
-     With Cross-Site-Scripting trouble under the project-application - this is can be with common steps.
+     But we are able to do CSRF-attack for this GET-request form (anyway).
+     And we are able to do CSRF-attack for POST-request form - if "csrf-tokens" will be known for us.
+     With Cross-Site-Scripting trouble under the project-application - quite likely to perform it.
      
-     So we able to exploiting and did the CSRF attack with this project-application based on points:
+     So we are able to exploit and did the CSRF attack with this project-application based on points:
      
      GET-request forms do not really protected by CSRF-tokens;
-     POST-request forms vulnerable if there is possible to get csrf-token (by using Cross-site-scripting as example).
+     POST-request forms vulnerable if possible to get csrf-token (by using Cross-site-scripting as example).
      
-     First of this points can be more visible, when we add log-out (on current time there is "mapping");
+     Some of this points can be more visible, when we add log-out (on current time there is "mapping");
      
-     Also with CSRF-enabling and with not changes about database-console:
-     hibernate/h2-console access will be not available based on points that CSRF-tokens is missing with login there;
+     Also with enabled CSRF protection and with default state about database-console:
+     hibernate/h2-console access will be 'broken' based on points that CSRF-tokens is missing with login there;
  
  
  
- **Second one** will provide situation that http-security-headers (by Spring setting) will be missing;
+ **Second one** will provide situation that http-**security**-headers (by Spring setting) will be missing;
  
- There is most common and good one headers; More nice to have this feature enabled;
+ Most common and good one headers are there; Indeed more nice to have this feature enabled;
  
- This is can be also as additional to "disabled"-point for http.cors; 
+ Also as additional to "disabled"-point for http.cors; 
  
- There is missing "direct" exploiting it yet; But this is already visible as potential troublepoints...
+ Unavailable "direct" exploiting it yet; But, anyway, already visible as potential troublepoints...
  
  
  
  **Third one** just provide "view"-point. :)
  
- When there is login - will be visible username under the form-page;
+ When logged - will be visible username under the form-page;
  
-      This is can be just "trigger" of visible understanding which user there..
-      Based also on points.. that there is missing log-out/proper work yet;
+      Can be just as "trigger" of visible understanding which user there..
+      Also based on point that not added proper work for 'log-out' yet;
       
-      This is can be helpful already for explaining some points about.
+      Can be helpful for explaining some points about.
