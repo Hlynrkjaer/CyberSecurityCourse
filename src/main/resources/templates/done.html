@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Good!!</title>
         <meta charset="UTF-8"/>
+        <title>❄️Velkommen❄️</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="screen"/>
         <style>
             li {float:left;}
-            li a{display: block; color:white; text-align:center; padding:16px; text-decoration:none;}
-            li a:hover{background-color: #111111}
+            li a {display:block; color:white; text-align:center; padding:16px; text-decoration:none;}
+            li a:hover {background-color: #111111}
         </style>
     </head>
     <body>
@@ -20,8 +20,8 @@
                 <li><a th:href="@{login}">Or re-login</a></li>  
                 <div sec:authorize="hasAuthority('ADMIN')"><li><a th:href="@{fylkr}">Do you remember fylkr's song "do The Trick" from album "trick"?</a></li></div>
                   <!--     ^ not properly configured and did not add dependencies for project.
-                      So should be visible just for "ADMIN"-authority, but will be visible for all
-                    For prevent this - we able do not use this tricks; or use this properly.
+                      So, should be visible just for "ADMIN"-authority, but will be visible for all.
+                    For prevent this - we are able do not use this tricks; or use this properly.
                   -->
             </ul>
       
