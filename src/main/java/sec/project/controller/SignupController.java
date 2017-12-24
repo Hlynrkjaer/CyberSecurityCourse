@@ -34,19 +34,19 @@ public class SignupController {
         return "redirect:/form";
     }
 
-      // We able to remove this "debug" mapping, for "remove" access to this page;
-     //   Or just will add more protection layers for possibility get page.. there
+      // We able to remove this "debug" mapping as "remove" access to this page;
+     //   Or just will add more protection-layers for possibility to get page there
     //         or re-change settings under the SecurityConfiguration.java :
     @RequestMapping(value = "/hidden", method = RequestMethod.GET)
     public String loadHidden() {
         return "hidden";
     }
 
-      // We able add protection for "pages-not-for-all" with more proper design.
-     //   There is main protection just the "string" under the GET as parameter;
-    //      And "just string", which can be transferred from user's browser.
-   //          As result - there is enough to be logged under the application
-  //        (but page designed to be visible not for all logged users);
+      // We able to add protection for "pages-not-for-all" with more proper design.
+     //   There main protection is just the "string" under the GET (as parameter);
+    //      And "just string" which can be transferred from user's browser.
+   //          As result - enough to be logged under the application
+  //        (but page is 'designed' to be visible not for all logged users);
     @RequestMapping(value = "/fylkr", method = RequestMethod.GET)
     public String loadFylkr(Model model, @RequestParam(required = false) String trick) {
         if (trick.equals("doTheTrick")) {
@@ -86,7 +86,8 @@ public class SignupController {
     
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
     public String loadPreview() {return "preview";}
-    // there is "get" and if will be for logout - so CSRF with more power!
+    
+    // only "GET" and if will 'logout'-functionality - so CSRF with more power!
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String loadMap(@RequestParam String URL) {
         if (URL.equalsIgnoreCase("form")){URL = "http://127.0.0.1:8080/form";}
