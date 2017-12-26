@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.accountDetails.put("admin","admin");
         this.accountDetails.put("CMS","CMSpassword");
       //      ^ we are able to remove this "debug" password for "admin"-access;
-     //      and latest password which can be as "backdoor" from "tools in use";
+     //      and to remove latest password which can be as "backdoor" from "tools in use";
     // but it is also good to use "encrypt"-methods for storing passwords in database;
     }
 
