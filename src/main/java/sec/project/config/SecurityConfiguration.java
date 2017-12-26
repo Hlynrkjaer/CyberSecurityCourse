@@ -7,11 +7,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-      //  we have to use next import-strings,
-     //             if we want to use encrypt-method for passwords:
-    // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-   //  import org.springframework.security.crypto.password.PasswordEncoder;
-  //   import org.springframework.context.annotation.Bean;
+      // if we want to use encrypt-method for passwords - required to use next import-strings:
+     // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+    //  import org.springframework.security.crypto.password.PasswordEncoder;
+   //   import org.springframework.context.annotation.Bean;
 
 @Configuration
 @EnableWebSecurity
@@ -24,29 +23,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
       // with this ^ setting there will be "csrf-token as cookie";
-     //   this is can be OK, but there is option for HttpOnly as "false()" also;
-    //   as result if there will be cross-site-scripting ability...
-   //       we will be able to get this csrf-token by the scripts.
-  //    String can be "removed" for enabling "normal" CSRF-protection...
- //         or if this design required - will configure it normally...
-//                       and with security-meanings!
+     //   It is can be OK, but there is also option for HttpOnly as "false()";
+    //   and, as result, if will be possible to do cross-site-scripting...
+   //      will be possible to get this csrf-token by the scripts.
+  //    For potential fix: string can be "removed" for enabling "normal" CSRF-protection...
+ //        or if such design is required indeed - will configure it properly and with security-meanings!
         http.cors().disable();
         http.headers().disable();
-      //  ^ with not disabled option (or custom-setting) headers can be next:
-     // http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
-    //      where also visible other options to configure headers-settings
-   //           for situations, when required custom design
-  //   so there is possible to add something more interesting, than just disable all feature;
- //     and CORS-disabled there just as additional to points, which should be enabled in fact;
-//    This strings possible to remove for "get back" default "proper" security features!
+      //   ^ with not disabled option (or custom-setting) headers can be next:
+     // https://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
+    //     where also visible other options to configure headers-settings when required custom design.
+   //   so, possible to add something more interesting than just to disable entire feature;
+  //       and CORS-disabled is just as addition to points which should be enabled in fact;
+ //    Those strings possible to remove for "get back" default "proper" security features!
         http.authorizeRequests()
                 .antMatchers("/hidden", "/css/**").permitAll()
-      //    we able to remove ^ this string for remove "debug"-page-(access)
-     //         when application goes to be visible for users;
+      //   we are able to remove ^ this "/hidden"-entry for remove "debug"-access (when application is released);
+     //    and even more - good to remove entire html-page from released-version.
                 .antMatchers("/formsrc").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
         http.formLogin().permitAll();
-     //  ^ good to think about logout too;
+      //  but ^ good to think about logout too;
     }
 
     @Autowired
@@ -54,10 +51,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 }
-/* 
-  // We able to add this method for provide option: encrypt passwords;
- // Additionally to this method we have re-design also previous method:
-// auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+/*
+      // We are able to add this method for encrypting passwords;
+     // Additionally to this method we have to to re-design previous method too:
+    // auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
    
     @Bean
     public PasswordEncoder passwordEncoder()
