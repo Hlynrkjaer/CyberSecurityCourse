@@ -34,19 +34,18 @@ public class SignupController {
         return "redirect:/form";
     }
 
-      // We able to remove this "debug" mapping as "remove" access to this page;
-     //   Or just will add more protection-layers for possibility to get page there
-    //         or re-change settings under the SecurityConfiguration.java :
+      // We are able to remove this "debug" mapping as "remove" access to this page at all;
+     //   Otherwise just will add more protection-layers for possibility to get page there
+    //     OR with changing settings under the SecurityConfiguration.java :
     @RequestMapping(value = "/hidden", method = RequestMethod.GET)
     public String loadHidden() {
         return "hidden";
     }
 
-      // We able to add protection for "pages-not-for-all" with more proper design.
+      // We are able to add protection for "pages-not-for-all" with more proper design.
      //   There main protection is just the "string" under the GET (as parameter);
     //      And "just string" which can be transferred from user's browser.
-   //          As result - enough to be logged under the application
-  //        (but page is 'designed' to be visible not for all logged users);
+   //     As result - enough to be logged (but page is 'designed' to be visible not for all logged users);
     @RequestMapping(value = "/fylkr", method = RequestMethod.GET)
     public String loadFylkr(Model model, @RequestParam(required = false) String trick) {
         if (trick.equals("doTheTrick")) {
@@ -87,7 +86,7 @@ public class SignupController {
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
     public String loadPreview() {return "preview";}
     
-    // only "GET" and if will 'logout'-functionality - so CSRF with more power!
+    // only "GET" and with potential 'logout'-functionality - CSRF will be with more power!
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String loadMap(@RequestParam String URL) {
         if (URL.equalsIgnoreCase("form")){URL = "http://127.0.0.1:8080/form";}
