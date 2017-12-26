@@ -18,13 +18,17 @@ Something like documentation for first design of this task available with next [
 
 **First one** provide some kind of ability to "improve" troubles with security configuration.
 
-      As result there will be disabled most of common "headers" and features, which good to have with "enabled" status;
+      As result - disabled most of common "headers" and features, which good to have with "enabled" status;
       
       This is just disabled default options under the Spring framework; 
       But will be more interesting to work with custom implementations;
       
       Because, basically, required to work with custom ones...
       if we indeed want to disable/change some of "headers"-features!
+      
+      later we did switch to http.headers().defaultsDisabled().contentTypeOptions() only;
+      Potential content sniffing is valid! 
+      Also as addition to "form.html" where we used 'title' before meta-charset-tag.
       
 **Second one** provide some kind of potential troublepoint with Unvalidated Redirects.
 
@@ -93,7 +97,7 @@ should be possible to get CSRF-token (based on disabled HttpOnly for this Csrfto
  
  
  
- **Second one** will provide situation that http-**security**-headers (by Spring setting) will be missing;
+ **Second one** will provide situation that certain http-**security**-header (by Spring setting) will be missing;
  
  Most common and good one headers are there; Indeed more nice to have this feature enabled;
  
