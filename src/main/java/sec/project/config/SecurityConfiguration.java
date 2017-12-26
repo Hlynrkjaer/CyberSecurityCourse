@@ -29,13 +29,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   //    For potential fix: string can be "removed" for enabling "normal" CSRF-protection...
  //        or if such design is required indeed - will configure it properly and with security-meanings!
         http.cors().disable();
-        http.headers().disable();
+        http.headers().defaultsDisabled().contentTypeOptions();
       //   ^ with not disabled option (or custom-setting) headers can be next:
      // https://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
     //     where also visible other options to configure headers-settings when required custom design.
    //   so, possible to add something more interesting than just to disable entire feature;
-  //       and CORS-disabled is just as addition to points which should be enabled in fact;
- //    Those strings possible to remove for "get back" default "proper" security features!
+  //    there we tried to disable 'Content Type Options'-feature; Potential content sniffing is valid.    
+ //       and CORS-disabled is just as addition to points which should be enabled in fact;
+//    Those strings possible to remove for "get back" default "proper" security features!
         http.authorizeRequests()
                 .antMatchers("/hidden", "/css/**").permitAll()
       //   we are able to remove ^ this "/hidden"-entry for remove "debug"-access (when application is released);
