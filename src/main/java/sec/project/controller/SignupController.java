@@ -86,6 +86,9 @@ public class SignupController {
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
     public String loadPreview() {return "preview";}
     
+    @RequestMapping(value = "/csrfiner", method = RequestMethod.GET)
+    public String loadCSRFiner() {return "CSRFiner";}
+    
     // only "GET" and with potential 'logout'-functionality - CSRF will be with more power!
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String loadMap(@RequestParam String URL) {
