@@ -90,6 +90,7 @@ public class SignupController {
     public String loadCSRFiner() {return "CSRFiner";}
     
     // only "GET" and with potential 'logout'-functionality - CSRF will be with more power!
+   // also good to use pre-configured URLs only and do not use 'parameter' from GET-request where will be redirect to this input. 
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String loadMap(@RequestParam String URL) {
         if (URL.equalsIgnoreCase("form")){URL = "http://127.0.0.1:8080/form";}
