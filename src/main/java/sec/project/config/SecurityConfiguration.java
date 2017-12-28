@@ -42,9 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
       //   we are able to remove ^ this "/hidden"-entry for remove "debug"-access (when application is released);
      //    and even more - good to remove entire html-page from released-version.
                 .antMatchers("/formsrc").hasAuthority("ADMIN")
+      //  possible to use such authority ^ checks for all pages where expected access only by admins. 
+     //   for example, to "/fylkr"-resource.        
                 .anyRequest().authenticated();
         http.formLogin().permitAll();
-      //  but ^ good to think about logout too;
+      //  but ^ good to think about logout too; currently, logout is not implemented at all;
     }
 
     @Autowired
